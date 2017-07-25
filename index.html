@@ -6,21 +6,23 @@
 	</head>
 	<body>
 		<form>
-			<input type="email" name="email" id="email" required>
+			<input type="email" name="email" id="email">
 			<input type="submit" name="submit">
 		</form>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript">
-			$("form").on("submit", function(){
-				var em = $("form").find("input[name='email']").val();
-				$.ajax({
-					type:'POST',
-					url: "email_submit.php",
-					data: $("form").serialize(),
-					success: function(data){
-						alert("Do whatever you want if the call completed succesfully");
-					}
+			$(document).ready(function(){
+				$("form").on("submit", function(){
+					var em = $("form").find("input[name='email']").val();
+					$.ajax({
+						type:"POST",
+						url: "email_submit.php",
+						data: "{email: 'a@a.com'}",
+						success: function(dataString){
+							alert("Do whatever you want if the call completed succesfully");
+						}
+					});
 				});
 			});
 		</script>
